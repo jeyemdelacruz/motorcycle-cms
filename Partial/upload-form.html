@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/CSS/upload-form-style.css" />
+
+<h1 class="upload-title">Upload FBX File</h1>
+    <div class="form-container">
+      <form id="uploadForm">
+        <label for="partName">Part Name</label>
+        <input type="text" id="partName" name="partName" placeholder="Enter part name" required>
+
+        <label for="partType">Part Type</label>
+        <input type="text" id="partType" name="partType" placeholder="e.g. Cylinder, Gear, etc." required>
+
+        <label for="partImage">Part Image</label>
+        <input type="file" id="partImage" name="partImage" accept="image/*" required>
+
+        <label for="fbxFile">FBX File</label>
+        <input type="file" id="fbxFile" name="fbxFile" accept=".fbx" required>
+
+        <button type="submit" id="uploadBtn">Upload</button>
+      </form>
+    </div>
