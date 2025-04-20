@@ -1,7 +1,7 @@
 import { db } from './firebase-config.js';
 import { ref, push } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
-// import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-storage.js";
-// const storage = getStorage();
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-storage.js";
+const storage = getStorage();
 
 const uploadPage = document.querySelector('#upload');
 if (uploadPage) {
@@ -32,36 +32,46 @@ if (uploadPage) {
           e.preventDefault();
           uploadBtn.disabled = true;
           uploadBtn.textContent = 'Uploading...';
-
+        
           const partName = partNameInput.value;
           const partType = partTypeInput.value;
           const uuid = generateUUID();
           const timestamp = new Date().toISOString();
-          // const image = partImageInput.files[0];
-          // const model = partModelInput.files[0];
-
-
-          // if (!image) return;
-
-          // const imageRef = storageRef(storage, uuid);
-
-
-
-          const newPart = {
-            uuid : uuid,
-            part_name: partName,
-            part_type: partType,
-            date_created: timestamp,
-            date_modified: timestamp,
-            image_url: "",
-            model_url: ""
-          };
-
+          const image = partImageInput.files[0];
+          const model = partModelInput.files[0];
+        
+          if (!image || !model) {
+            alert("Please upload both an image and a model file.");
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = 'Upload';
+            return;
+          }
+        
+          const imageRef = storageRef(storage, `images/${uuid}_${image.name}`);
+          const modelRef = storageRef(storage, `models/${uuid}_${model.name}`);
+        
           try {
-             // await uploadBytes(imageRef, image);
-            // const downloadURL = await getDownloadURL(imageRef);
+            // Upload both files
+            await uploadBytes(imageRef, image);
+            await uploadBytes(modelRef, model);
+        
+            // Get download URLs
+            const imageURL = await getDownloadURL(imageRef);
+            const modelURL = await getDownloadURL(modelRef);
+        
+            const newPart = {
+              uuid: uuid,
+              part_name: partName,
+              part_type: partType,
+              date_created: timestamp,
+              date_modified: timestamp,
+              image_url: imageURL,
+              model_url: modelURL
+            };
+        
             const partsRef = ref(db, 'Parts');
             await push(partsRef, newPart);
+        
             showSuccessModal();
           } catch (err) {
             console.error('Upload failed:', err);
