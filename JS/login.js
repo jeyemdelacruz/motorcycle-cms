@@ -22,9 +22,10 @@ const loginScreen = document.getElementById('login-screen');
       function showDashboard() {
         document.getElementById('login-screen').style.display = "none";
         document.getElementById('dashboard').style.display = "block";
-      }
 
-    // Auto-login if already logged in
+        showPage('objects');
+        loadObjects();
+      }
 
     window.onload = () => {
         if (sessionStorage.getItem("loggedIn")) {

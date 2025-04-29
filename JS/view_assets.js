@@ -34,7 +34,6 @@ window.addEventListener('DOMContentLoaded', () => {
       <button class="card" data-index="${start + index}">
         <img src="${part.image_url || 'placeholder.jpg'}" alt="${part.part_name}" />
         <h3>${part.part_name}</h3>
-        <p>${part.part_type}</p>
         <small>${new Date(part.date_modified).toLocaleString()}</small>
       </button>
     `).join('');
@@ -71,11 +70,8 @@ window.addEventListener('DOMContentLoaded', () => {
       <div class="modal-content">
         <span class="close-button">&times;</span>
         <div class="modal-body">
-          <label>Part Name:</label>
+          <label>Engine Name:</label>
           <input type="text" id="partName" value="${part.part_name}" disabled />
-
-          <label>Part Type:</label>
-          <input type="text" id="partType" value="${part.part_type}" disabled />
 
           <label>Image URL:</label>
           <input type="text" id="imageUrl" value="${part.image_url || ''}" disabled />
@@ -84,7 +80,7 @@ window.addEventListener('DOMContentLoaded', () => {
           <input type="text" id="dateModified" value="${new Date(part.date_modified).toLocaleString()}" disabled />
 
           <div class="modal-actions">
-            <button id="editBtn">Edit</button>
+
             <button id="deleteBtn">Delete</button>
             <button id="updateBtn" style="display:none;">Update</button>
             <button id="cancelBtn" style="display:none;">Cancel</button>
@@ -100,21 +96,21 @@ window.addEventListener('DOMContentLoaded', () => {
     // const partTypeInput = modal.querySelector('#partType');
     const imageUrlInput = modal.querySelector('#imageUrl');
 
-    const editBtn = modal.querySelector('#editBtn');
+    // const editBtn = modal.querySelector('#editBtn');
     const deleteBtn = modal.querySelector('#deleteBtn');
     const updateBtn = modal.querySelector('#updateBtn');
     const cancelBtn = modal.querySelector('#cancelBtn');
 
-    editBtn.onclick = () => {
-      partNameInput.disabled = false;
-      // partTypeInput.disabled = false;
-      imageUrlInput.disabled = false;
+    // editBtn.onclick = () => {
+    //   partNameInput.disabled = false;
+    //   // partTypeInput.disabled = false;
+    //   imageUrlInput.disabled = false;
 
-      editBtn.style.display = 'none';
-      deleteBtn.style.display = 'none';
-      updateBtn.style.display = 'inline-block';
-      cancelBtn.style.display = 'inline-block';
-    };
+    //   editBtn.style.display = 'none';
+    //   deleteBtn.style.display = 'none';
+    //   updateBtn.style.display = 'inline-block';
+    //   cancelBtn.style.display = 'inline-block';
+    // };
 
     cancelBtn.onclick = () => {
       modal.remove();
@@ -162,7 +158,7 @@ window.addEventListener('DOMContentLoaded', () => {
             max-width: 300px;
           ">
             <h3 style="color: #dc3545">Confirm Delete</h3>
-            <p>Are you sure you want to delete this part?</p>
+            <p>Are you sure you want to delete this Engine?</p>
             <div style="margin-top: 15px; display: flex; gap: 10px; justify-content: center;">
               <button id="confirmDeleteBtn" style="
                 background-color: #dc3545;
