@@ -62,7 +62,7 @@ if (uploadPage) {
             const newPart = {
               uuid: uuid,
               part_name: partName,
-              part_type: partType,
+              // part_type: partType,
               date_created: timestamp,
               date_modified: timestamp,
               image_url: imageURL,

@@ -97,7 +97,7 @@ window.addEventListener('DOMContentLoaded', () => {
     modal.querySelector('.close-button').onclick = () => modal.remove();
 
     const partNameInput = modal.querySelector('#partName');
-    const partTypeInput = modal.querySelector('#partType');
+    // const partTypeInput = modal.querySelector('#partType');
     const imageUrlInput = modal.querySelector('#imageUrl');
 
     const editBtn = modal.querySelector('#editBtn');
@@ -107,7 +107,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     editBtn.onclick = () => {
       partNameInput.disabled = false;
-      partTypeInput.disabled = false;
+      // partTypeInput.disabled = false;
       imageUrlInput.disabled = false;
 
       editBtn.style.display = 'none';
@@ -125,7 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const updatedDate = new Date().toISOString();
       const updatedPart = {
         part_name: partNameInput.value,
-        part_type: partTypeInput.value,
+        // part_type: partTypeInput.value,
         image_url: imageUrlInput.value,
         date_modified: updatedDate
       };
