@@ -1,20 +1,24 @@
 <link rel="stylesheet" href="/CSS/upload-form-style.css" />
 
 <h1 class="upload-title">Upload FBX File</h1>
-    <div class="form-container">
-      <form id="uploadForm">
-        <label for="partName">Part Name</label>
-        <input type="text" id="partName" name="partName" placeholder="Enter part name" required>
+<div class="form-container">
+  <form id="uploadForm">
+    <label for="partName">Engine Name</label>
+    <select id="partName" name="partName" required>
+      <option value="" disabled selected hidden>Select Engine</option>
+      <option value="Click 125">Click 125</option>
+      <option value="CG 125">CG 125</option>
+    </select>
 
-        <label for="partType">Part Type</label>
-        <input type="text" id="partType" name="partType" placeholder="e.g. Cylinder, Gear, etc." required>
+    <!-- <label for="partType">Engine Type</label>
+    <input type="text" id="partType" name="partType" placeholder="e.g. Cylinder, Gear, etc." required> -->
 
-        <label for="partImage">Part Image</label>
-        <input type="file" id="partImage" name="partImage" accept="image/*" required>
+    <label for="partImage">Part Image</label>
+    <input type="file" id="partImage" name="partImage" accept="image/*" required>
 
-        <label for="fbxFile">FBX File</label>
-        <input type="file" id="fbxFile" name="fbxFile" accept=".fbx" required>
+    <label for="fbxFile">Glb File</label>
+    <input type="file" id="fbxFile" name="fbxFile" accept=".glb" required>
 
-        <button type="submit" id="uploadBtn">Upload</button>
-      </form>
-    </div>
+    <button type="submit" id="uploadBtn">Upload</button>
+  </form>
+</div>

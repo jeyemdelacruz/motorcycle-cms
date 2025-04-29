@@ -13,7 +13,7 @@ if (uploadPage) {
       requestAnimationFrame(() => {
         const uploadForm = document.getElementById('uploadForm');
         const partNameInput = document.getElementById('partName');
-        const partTypeInput = document.getElementById('partType');
+        // const partTypeInput = document.getElementById('partType');
         const partImageInput = document.getElementById('partImage');
         const partModelInput = document.getElementById('fbxFile');
         const uploadBtn = document.getElementById('uploadBtn');
@@ -34,7 +34,7 @@ if (uploadPage) {
           uploadBtn.textContent = 'Uploading...';
         
           const partName = partNameInput.value;
-          const partType = partTypeInput.value;
+          // const partType = partTypeInput.value;
           const uuid = generateUUID();
           const timestamp = new Date().toISOString();
           const image = partImageInput.files[0];
