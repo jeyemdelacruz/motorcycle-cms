@@ -47,8 +47,8 @@ if (uploadPage) {
             return;
           }
         
-          const imageRef = storageRef(storage, `images/${uuid}_${image.name}`);
-          const modelRef = storageRef(storage, `models/${uuid}_${model.name}`);
+          const imageRef = storageRef(storage, `images/${image.name}`);
+          const modelRef = storageRef(storage, `models/${model.name}`);
         
           try {
             // Upload both files
